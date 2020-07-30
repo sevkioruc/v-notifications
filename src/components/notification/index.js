@@ -6,10 +6,10 @@ const n = Vue.extend(notification);
 
 let instance;
 
-export default () => {  
+export default (params) => {  
   instance = new n();
   instance.vm  = instance.$mount();
 
-  instance.createNotification('Deneme');
+  instance.createNotification(params);
   utils.insertBody(instance.vm.$el);
 }

@@ -11,7 +11,11 @@ export default {
   },
   methods: {
     run() {
-      noti();
+      let params = {};
+      params.message = 'FromApp';
+      params.state = 'danger';
+      params.position = 'bottom-right';
+      noti(params);
     }
   }
 }

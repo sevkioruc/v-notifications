@@ -3,6 +3,7 @@
     ref="noti"
     v-if="isOpened"
     class="notification"
+    :class="[setState(), setPosition()]"
   >
     <span class="message"> {{message}} </span>
     <span class="close" @click="closeNotification">x</span>
@@ -14,7 +15,9 @@ export default {
   data() {
     return {
       isOpened: false,
-      message: 'Dummy Message',
+      message: '',
+      state: '',
+      position: ''
     }
   },
   methods: {
@@ -22,11 +25,20 @@ export default {
       this.isOpened = false;
     },
 
-    createNotification(message) {
+    createNotification(params) {
       this.isOpened = true;
-      this.message = message;
-    }
+      this.message = params.message;
+      this.state = params.state;
+      this.params = params.position;
+    },
 
+    setPosition() {
+      return this.position;
+    },
+
+    setState() {
+      return this.state;
+    }
   }
 }
 </script>
@@ -35,6 +47,7 @@ export default {
   body {
     position: relative;
   }
+
   .notification {
     border: 1px solid #ccc;
     width: 150px;
@@ -46,5 +59,32 @@ export default {
 
   .close {
     cursor: pointer;
+  }
+
+  .success {
+    background-color: #28a745;
+  }
+
+  .danger {
+    background-color: #dc3545;
+  }
+  
+  .warning {
+    background-color: #ffc107;
+  }
+
+  .bottom-left {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .bottom-middle {
+    bottom: 10px;
+    margin-left: calc(50% - 150px);
   }
 </style>
