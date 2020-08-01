@@ -1,13 +1,15 @@
 <template>
-  <div
-    ref="noti"
-    v-if="isOpened"
-    class="notification"
-    :class="[setState(), setPosition()]"
-  >
-    <span class="message"> {{message}} </span>
-    <span class="close" @click="closeNotification">x</span>
-  </div>
+  <transition name="fade">
+    <div
+      ref="noti"
+      v-if="isOpened"
+      class="notification"
+      :class="[setState(), setPosition()]"
+    >
+      <span class="message"> {{message}} </span>
+      <span class="close" @click="closeNotification">x</span>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -30,6 +32,10 @@ export default {
       this.message = params.message;
       this.state = params.state;
       this.params = params.position;
+
+      setTimeout(() =>{
+        this.clear();
+      }, 2000);
     },
 
     setPosition() {
@@ -38,6 +44,13 @@ export default {
 
     setState() {
       return this.state;
+    },
+
+    clear() {
+      this.isOpened = false;
+      this.message = '';
+      this.state = '';
+      this.params = '';
     }
   }
 }
@@ -87,4 +100,18 @@ export default {
     bottom: 10px;
     margin-left: calc(50% - 150px);
   }
+
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    transition: opacity 2s;
+  }
+
+  .fade-leave-active {
+    transition: opacity 2s;
+    opacity: 0;
+  }
+
 </style>
