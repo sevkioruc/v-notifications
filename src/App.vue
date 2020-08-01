@@ -13,8 +13,8 @@ export default {
     run() {
       let params = {};
       params.message = 'FromApp';
-      params.state = 'danger';
-      params.position = 'bottom-right';
+      params.state = 'success';
+      params.position = 'bottom-middle';
       noti(params);
     }
   }

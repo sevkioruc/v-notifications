@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="slide">
     <div
       ref="noti"
       v-if="isOpened"
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped>  
   body {
     position: relative;
   }
@@ -101,17 +101,33 @@ export default {
     margin-left: calc(50% - 150px);
   }
 
-  .fade-enter {
-    opacity: 0;
+  .slide-enter-active {
+    animation: slide-in 1s ease-in forwards;
   }
 
-  .fade-enter-active {
-    transition: opacity 2s;
+  .slide-leave-active {
+    animation: slide-out 1.5s ease-in forwards;
   }
 
-  .fade-leave-active {
-    transition: opacity 2s;
-    opacity: 0;
+  @keyframes slide-in {
+    from {
+      transform: translateY(20px);
+    }
+
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+
+  @keyframes slide-out {
+    from {
+      transform: translateY(0px);
+    }
+
+    to {
+      transform: translateY(20px);
+    }
   }
 
 </style>
