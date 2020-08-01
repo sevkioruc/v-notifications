@@ -107,6 +107,7 @@ export default {
 
   .bottom-middle {
     bottom: 20px;
+    margin-left: 50%
   }
 
   .slide-right-enter-active {
