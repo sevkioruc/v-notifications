@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide">
+  <transition :name="slideType">
     <div
       ref="noti"
       v-if="isOpened"
@@ -19,7 +19,8 @@ export default {
       isOpened: false,
       message: '',
       state: '',
-      position: ''
+      position: '',
+      slideType: ''
     }
   },
   methods: {
@@ -31,9 +32,17 @@ export default {
       this.isOpened = true;
       this.message = params.message;
       this.state = params.state;
-      this.params = params.position;
+      this.position = params.position;
 
-      setTimeout(() =>{
+      if (params.position === 'bottom-right') {
+        this.slideType = 'slide-right';
+      } else if (params.position === 'bottom-left') {
+        this.slideType = 'slide-left';
+      } else {
+        this.slideType = 'slide-middle';
+      }
+
+      setTimeout(() => {
         this.clear();
       }, 2000);
     },
@@ -51,23 +60,23 @@ export default {
       this.message = '';
       this.state = '';
       this.params = '';
+      this.slideType = '';
     }
   }
 }
 </script>
 
-<style scoped>  
+<style scoped>
   body {
     position: relative;
   }
 
   .notification {
+    position: absolute;
     border: 1px solid #ccc;
+    text-align: center;
     width: 150px;
     height: 30px;
-    text-align: center;
-    position: absolute;
-    bottom: 10px;
   }
 
   .close {
@@ -88,28 +97,83 @@ export default {
 
   .bottom-left {
     bottom: 10px;
-    left: 10px;
+    left: 50px;
   }
 
   .bottom-right {
     bottom: 10px;
-    right: 10px;
+    right: 50px;
   }
 
   .bottom-middle {
-    bottom: 10px;
-    margin-left: calc(50% - 150px);
+    bottom: 20px;
   }
 
-  .slide-enter-active {
-    animation: slide-in 1s ease-in forwards;
+  .slide-right-enter-active {
+    animation: slide-right-in 1.5s ease-out forwards;
   }
 
-  .slide-leave-active {
-    animation: slide-out 1.5s ease-in forwards;
+  .slide-right-leave-active {
+    animation: slide-right-out 1.5s ease-out forwards;
   }
 
-  @keyframes slide-in {
+  .slide-left-enter-active {
+    animation: slide-left-in 1.5s ease-out forwards;
+  }
+
+  .slide-left-leave-active {
+    animation: slide-left-out 1.5s ease-out forwards;
+  }
+
+  .slide-middle-enter-active {
+    animation: slide-middle-in 1.5s ease-out forwards;
+  }
+
+  .slide-middle-leave-active {
+    animation: slide-middle-out 1.5s ease-out forwards;
+  }
+
+  @keyframes slide-right-in {
+    from {
+      transform: translateX(50px);
+    }
+
+    to {
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes slide-right-out {
+    from {
+      transform: translateX(0px);
+    }
+
+    to {
+      transform: translateX(50px);
+    }
+  }
+
+  @keyframes slide-left-in {
+    from {
+      transform: translateX(-100px);
+    }
+
+    to {
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes slide-left-out {
+    from {
+      transform: translateX(0px);
+    }
+
+    to {
+      transform: translateX(-50px);
+    }
+  }
+
+  @keyframes slide-middle-in {
     from {
       transform: translateY(20px);
     }
@@ -119,8 +183,7 @@ export default {
     }
   }
 
-
-  @keyframes slide-out {
+  @keyframes slide-middle-out {
     from {
       transform: translateY(0px);
     }

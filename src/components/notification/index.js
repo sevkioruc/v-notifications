@@ -6,7 +6,7 @@ const n = Vue.extend(notification);
 
 let instance;
 
-export default (params) => {  
+export default (params) => {
   instance = new n();
   instance.vm  = instance.$mount();
 

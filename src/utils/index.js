@@ -1,6 +1,6 @@
 export default {
   insertBody(elx, parent){
-    let bodyx = parent ? parent : document.body
+    let bodyx = document.body
     bodyx.insertBefore(elx, bodyx.firstChild)
   }
 }
