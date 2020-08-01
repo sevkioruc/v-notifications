@@ -74,6 +74,7 @@ export default {
   .notification {
     position: absolute;
     border: 1px solid #ccc;
+    border-radius: 5px;
     text-align: center;
     width: 150px;
     height: 30px;
@@ -106,7 +107,7 @@ export default {
   }
 
   .bottom-middle {
-    bottom: 20px;
+    bottom: 10px;
     margin-left: 50%
   }
 
@@ -176,7 +177,7 @@ export default {
 
   @keyframes slide-middle-in {
     from {
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
 
     to {
@@ -190,7 +191,7 @@ export default {
     }
 
     to {
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
   }
 
