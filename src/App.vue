@@ -14,7 +14,7 @@ export default {
       let params = {};
       params.message = 'FromApp1';
       params.state = 'warning';
-      params.position = 'bottom-right';
+      params.position = 'bottom-left';
 
       noti(params);
     }

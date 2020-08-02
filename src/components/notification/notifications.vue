@@ -82,8 +82,12 @@ export default {
 
   .wrapper {
     margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 240px;
   }
-
+  
   .message {
     font-family: sans-serif;
   }
@@ -92,15 +96,15 @@ export default {
     position: absolute;
     border: 1px solid #ccc;
     border-radius: 5px;
-    word-wrap: break-word;
     text-align: center;
     width: 250px;
-    min-height: 40px;
+    height: 40px;
   }
 
   .close {
-    float: right;
-    margin-right: 10px;
+    position: fixed;
+    right: 5px;
+    margin-right: 5px;
     font-size: 15px;
     cursor: pointer;
   }
