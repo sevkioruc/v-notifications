@@ -25,11 +25,13 @@ export default {
       slideType: ''
     }
   },
+
   methods: {
     createNotification(params) {
       setTimeout(() => {
         this.changeCoord();
       }, 0);
+
       this.isOpened = true;
       this.message = params.message;
       this.state = params.state;
@@ -47,7 +49,7 @@ export default {
     closeNotification() {
       setTimeout(() => {
         this.changeCoord();
-      }, 1000);
+      }, 900);
       this.isOpened = false;
     },
 
@@ -57,10 +59,6 @@ export default {
 
     setState() {
       return this.state;
-    },
-
-    clear() {
-      this.isOpened = false;
     },
 
     changeCoord() {
@@ -119,12 +117,12 @@ export default {
     background-color: #ffc107;
   }
 
-  .bottom-left {
+  .bottom-left{
     bottom: 10px;
-    left: 50px;
+    left: 20px;
   }
 
-  .bottom-right {
+  .bottom-right{
     bottom: 10px;
     right: 20px;
   }
@@ -139,15 +137,17 @@ export default {
   }
 
   .slide-right-leave-active {
-    animation: slide-right-out 0.50s ease-out forwards;
+    transition: opacity 750ms;
+    opacity: 0;
   }
 
   .slide-left-enter-active {
-    animation: slide-left-in 1.5s ease-out forwards;
+    animation: slide-left-in 1.0s ease-out forwards;
   }
 
   .slide-left-leave-active {
-    animation: slide-left-out 1.5s ease-out forwards;
+    transition: opacity 750ms;
+    opacity: 0;
   }
 
   .slide-middle-enter-active {
@@ -155,7 +155,8 @@ export default {
   }
 
   .slide-middle-leave-active {
-    animation: slide-middle-out 1.5s ease-out forwards;
+    transition: opacity 750ms;
+    opacity: 0;
   }
 
   @keyframes slide-right-in {
@@ -168,33 +169,13 @@ export default {
     }
   }
 
-  @keyframes slide-right-out {
-    from {
-      transform: translateX(0px);
-    }
-
-    to {
-      transform: translateX(20px);
-    }
-  }
-
   @keyframes slide-left-in {
     from {
-      transform: translateX(-100px);
+      transform: translateX(-20px);
     }
 
     to {
       transform: translateX(0px);
-    }
-  }
-
-  @keyframes slide-left-out {
-    from {
-      transform: translateX(0px);
-    }
-
-    to {
-      transform: translateX(-50px);
     }
   }
 
@@ -205,16 +186,6 @@ export default {
 
     to {
       transform: translateY(0px);
-    }
-  }
-
-  @keyframes slide-middle-out {
-    from {
-      transform: translateY(0px);
-    }
-
-    to {
-      transform: translateY(10px);
     }
   }
 
