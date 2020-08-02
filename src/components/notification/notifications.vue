@@ -6,8 +6,10 @@
       class="notification"
       :class="[setState(), setPosition()]"
     >
-      <span class="message"> {{message}} </span>
-      <span class="close" @click="closeNotification">x</span>
+      <div class="wrapper">
+        <span class="message"> {{message}} </span>
+        <span class="close" @click="closeNotification">X</span>
+      </div>
     </div>
   </transition>
 </template>
@@ -16,7 +18,7 @@
 export default {
   data() {
     return {
-      isOpened: false,
+      isOpened: null,
       message: '',
       state: '',
       position: '',
@@ -24,11 +26,10 @@ export default {
     }
   },
   methods: {
-    closeNotification() {
-      this.isOpened = false;
-    },
-
     createNotification(params) {
+      setTimeout(() => {
+        this.changeCoord();
+      }, 0);
       this.isOpened = true;
       this.message = params.message;
       this.state = params.state;
@@ -41,10 +42,13 @@ export default {
       } else {
         this.slideType = 'slide-middle';
       }
+    },
 
+    closeNotification() {
       setTimeout(() => {
-        this.clear();
-      }, 2000);
+        this.changeCoord();
+      }, 1000);
+      this.isOpened = false;
     },
 
     setPosition() {
@@ -57,10 +61,17 @@ export default {
 
     clear() {
       this.isOpened = false;
-      this.message = '';
-      this.state = '';
-      this.params = '';
-      this.slideType = '';
+    },
+
+    changeCoord() {
+      let notis = document.querySelectorAll('.notification');
+      for (let i = 0; i < notis.length; i++) {
+        let hx = 10 * i;
+        for (var i2 = 0; i2 < i; i2++) {
+          hx += notis[i2].clientHeight + 6;
+        }
+        notis[i].style.transform = `translatey(-${hx}px)`
+      }
     }
   }
 }
@@ -71,16 +82,28 @@ export default {
     position: relative;
   }
 
+  .wrapper {
+    margin-top: 10px;
+  }
+
+  .message {
+    font-family: sans-serif;
+  }
+
   .notification {
     position: absolute;
     border: 1px solid #ccc;
     border-radius: 5px;
+    word-wrap: break-word;
     text-align: center;
-    width: 150px;
-    height: 30px;
+    width: 250px;
+    min-height: 40px;
   }
 
   .close {
+    float: right;
+    margin-right: 10px;
+    font-size: 15px;
     cursor: pointer;
   }
 
@@ -103,20 +126,20 @@ export default {
 
   .bottom-right {
     bottom: 10px;
-    right: 50px;
+    right: 20px;
   }
 
   .bottom-middle {
     bottom: 10px;
-    margin-left: 50%
+    margin-left: 50%;
   }
 
   .slide-right-enter-active {
-    animation: slide-right-in 1.5s ease-out forwards;
+    animation: slide-right-in 1.0s ease-out forwards;
   }
 
   .slide-right-leave-active {
-    animation: slide-right-out 1.5s ease-out forwards;
+    animation: slide-right-out 0.50s ease-out forwards;
   }
 
   .slide-left-enter-active {
@@ -137,7 +160,7 @@ export default {
 
   @keyframes slide-right-in {
     from {
-      transform: translateX(50px);
+      transform: translateX(20px);
     }
 
     to {
@@ -151,7 +174,7 @@ export default {
     }
 
     to {
-      transform: translateX(50px);
+      transform: translateX(20px);
     }
   }
 

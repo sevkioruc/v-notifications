@@ -12,9 +12,10 @@ export default {
   methods: {
     run() {
       let params = {};
-      params.message = 'FromApp';
-      params.state = 'success';
-      params.position = 'bottom-middle';
+      params.message = 'FromApp1';
+      params.state = 'warning';
+      params.position = 'bottom-right';
+
       noti(params);
     }
   }
