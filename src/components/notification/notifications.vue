@@ -27,19 +27,19 @@ export default {
   },
 
   methods: {
-    createNotification(params) {
+    createNotification(message, state, position) {
       setTimeout(() => {
         this.changeCoord();
       }, 0);
 
       this.isOpened = true;
-      this.message = params.message;
-      this.state = params.state;
-      this.position = params.position;
+      this.message = message;
+      this.state = state;
+      this.position = position;
 
-      if (params.position === 'bottom-right') {
+      if (this.position === 'bottom-right') {
         this.slideType = 'slide-right';
-      } else if (params.position === 'bottom-left') {
+      } else if (this.position === 'bottom-left') {
         this.slideType = 'slide-left';
       } else {
         this.slideType = 'slide-middle';

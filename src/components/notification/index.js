@@ -6,10 +6,10 @@ const n = Vue.extend(notification);
 
 let instance;
 
-export default (params) => {
+export default (message, state, position) => {
   instance = new n();
   instance.vm  = instance.$mount();
 
-  instance.createNotification(params);
+  instance.createNotification(message, state, position);
   utils.insertBody(instance.vm.$el);
 }
