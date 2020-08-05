@@ -27,7 +27,7 @@ export default {
   },
 
   methods: {
-    createNotification(message, state, position) {
+    createNotification(message, state = 'success', position = 'bottom-right') {
       setTimeout(() => {
         this.changeCoord();
       }, 0);

@@ -7,8 +7,6 @@ npm install --save vue-notifications
 ```
 
 ```js
-import x from 'vue-notifications';
+import notification from 'src/components/notification/index.js';
 
-x.createNotification(state, message, position);
-  
-```
+notification(message, state, position);
