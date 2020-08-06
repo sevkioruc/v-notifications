@@ -45,3 +45,6 @@ notification(message, state, position);
 - notification('Hello World', 'warning', 'bottom-left');
 ```
 
+## 🔑 License
+
+MIT © [Şevki Oruç](https://github.com/sevkioruc)
