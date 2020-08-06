@@ -31,7 +31,7 @@ notification(message, state, position);
 ### Position values
 - bottom-right
 - bottom-left
-- bottom-middle
+- bottom-center
 
 ## Examples
 

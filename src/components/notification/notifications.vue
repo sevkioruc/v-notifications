@@ -42,7 +42,7 @@ export default {
       } else if (this.position === 'bottom-left') {
         this.slideType = 'slide-left';
       } else {
-        this.slideType = 'slide-middle';
+        this.slideType = 'slide-center';
       }
     },
 
@@ -131,7 +131,7 @@ export default {
     right: 20px;
   }
 
-  .bottom-middle {
+  .bottom-center {
     bottom: 10px;
     margin-left: 50%;
   }
@@ -154,11 +154,11 @@ export default {
     opacity: 0;
   }
 
-  .slide-middle-enter-active {
-    animation: slide-middle-in 1.5s ease-out forwards;
+  .slide-cen-enter-active {
+    animation: slide-center-in 1.5s ease-out forwards;
   }
 
-  .slide-middle-leave-active {
+  .slide-center-leave-active {
     transition: opacity 750ms;
     opacity: 0;
   }
@@ -183,7 +183,7 @@ export default {
     }
   }
 
-  @keyframes slide-middle-in {
+  @keyframes slide-center-in {
     from {
       transform: translateY(10px);
     }
