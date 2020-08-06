@@ -1,5 +1,7 @@
 # v-notifications
 
+Users want to see feedback after their actions. This package can be used to show feedback to users.
+
 ## Usage
 
 ```
@@ -7,7 +9,7 @@ npm install v-notifications
 ```
 
 ```js
-import notification from 'src/components/notification/index.js';
+import notification from 'v-notifications/index.js';
 
 notification(message, state, position);
 ```
