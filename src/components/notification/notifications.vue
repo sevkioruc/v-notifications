@@ -90,6 +90,7 @@ export default {
   
   .message {
     font-family: sans-serif;
+    color: white;
   }
 
   .notification {
