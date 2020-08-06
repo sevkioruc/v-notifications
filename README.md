@@ -1,9 +1,9 @@
-# vue-notifications
+# v-notifications
 
 ## Usage
 
 ```
-npm install --save vue-notifications
+npm install v-notifications
 ```
 
 ```js
