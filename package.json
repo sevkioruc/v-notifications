@@ -1,10 +1,19 @@
 {
-  "name": "vue-notifications",
+  "name": "v-notifications",
   "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "sevkioruc34@gmail.com <sevkioruc34@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "keywords": [
+    "vue",
+    "notifications"
+  ],
+  "homepage": "https://github.com/sevkioruc/v-notifications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sevkioruc/v-notifications.git"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
